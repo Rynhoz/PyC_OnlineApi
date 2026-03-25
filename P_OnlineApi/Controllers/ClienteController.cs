@@ -78,7 +78,7 @@ namespace P_OnlineApi.Controllers
 
             if (!string.IsNullOrWhiteSpace(nombre))
             {
-                query = query.Where(c => c.NombreCompleto.Contains(nombre));
+                query = query.Where(c => c.NombreCompleto.ToLower().Contains(nombre.ToLower()));
             }
             if (activo.HasValue)
             {
