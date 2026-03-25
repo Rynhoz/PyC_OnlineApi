@@ -80,6 +80,8 @@ namespace P_OnlineApi.Controllers
             {
                 query = query.Where(c => c.NombreCompleto.ToLower().Contains(nombre.ToLower()));
             }
+
+            //query para booleano
             if (activo.HasValue)
             {
                 query = query.Where(c => c.Activo == activo);
