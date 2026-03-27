@@ -56,7 +56,7 @@ namespace P_OnlineApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Producto> DeleteProducto(int id)
+        public ActionResult<Producto> DeletearProducto(int id)
         {
             var pr = _context.Productos.FirstOrDefault(p => p.Id == id);
             if (pr == null) return NoContent();
@@ -64,5 +64,16 @@ namespace P_OnlineApi.Controllers
             _context.SaveChanges();
             return Ok(_context.Productos);
         }
+
+        //[HttpPatch("{id}/cambiar-estado")]
+        //public async Task<ActionResult> DeleteProducto(int id)
+        //{
+        //    var producto = await _context.Productos.FirstOrDefaultAsync(p => p.Id == id);
+        //    if (producto == nameof) return NotFound("El producto no fue encontrado");
+        //    producto.Estado = !producto.Estado;
+        //    await _context.SaveChangesAsync();
+        //    return Ok();
+        //}
+
     }
 }

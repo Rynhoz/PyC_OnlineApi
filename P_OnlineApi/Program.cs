@@ -12,14 +12,14 @@ builder.Services.AddDbContext<PedidoDbContext>(options =>
     options.UseSqlite("Data Source=pedidos.db")
 );
 
-//Para cliente
-builder.Services.AddDbContext<PedidoDbContext>(options => options.UseSqlite("Data Source=clientes.db"));
+////Para cliente
+//builder.Services.AddDbContext<PedidoDbContext>(options => options.UseSqlite("Data Source=clientes.db"));
 
-//para pedidos
-builder.Services.AddDbContext<PedidoDbContext>(options => options.UseSqlite("Data Source=productos.db"));
+////para pedidos
+//builder.Services.AddDbContext<PedidoDbContext>(options => options.UseSqlite("Data Source=productos.db"));
 
-//para detalles
-builder.Services.AddDbContext<PedidoDbContext>(options => options.UseSqlite("Data Source=detallePedidos.db"));
+////para detalles
+//builder.Services.AddDbContext<PedidoDbContext>(options => options.UseSqlite("Data Source=detallePedidos.db"));
 
 
 builder.Services.AddControllers();

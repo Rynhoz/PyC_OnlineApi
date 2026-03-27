@@ -10,8 +10,8 @@ using P_OnlineApi.Data;
 namespace P_OnlineApi.Migrations
 {
     [DbContext(typeof(PedidoDbContext))]
-    [Migration("20260327132835_detallepedido")]
-    partial class detallepedido
+    [Migration("20260327143837_final")]
+    partial class final
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
