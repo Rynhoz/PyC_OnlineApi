@@ -15,6 +15,13 @@ builder.Services.AddDbContext<PedidoDbContext>(options =>
 //Para cliente
 builder.Services.AddDbContext<PedidoDbContext>(options => options.UseSqlite("Data Source=clientes.db"));
 
+//para pedidos
+builder.Services.AddDbContext<PedidoDbContext>(options => options.UseSqlite("Data Source=productos.db"));
+
+//para detalles
+builder.Services.AddDbContext<PedidoDbContext>(options => options.UseSqlite("Data Source=detallePedidos.db"));
+
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

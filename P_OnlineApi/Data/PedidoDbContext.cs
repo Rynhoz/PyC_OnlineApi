@@ -22,6 +22,9 @@ namespace P_OnlineApi.Data
 
         //Productos
         public DbSet<Producto> Productos { get; set; }
+
+        //Detalle Pedido
+        public DbSet<DetallePedido> DetallePedido { get; set; }
     }
 }
 /// como se realiza un inyeccion de dependencias

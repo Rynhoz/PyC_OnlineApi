@@ -11,9 +11,10 @@ namespace P_OnlineApi.Models
         [JsonIgnore] //Notacion (serializacion es convertirlo a Json) IMPORTANTE
         public Cliente? Cliente { get; set; } 
 
-        public string Detalle { get; set; } = string.Empty;
-        public int Total { get; set; }
+        //public string Detalle { get; set; } = string.Empty;
+        public decimal Total { get; set; }
         public string Estado { get; set; } = string.Empty;
+        public List<DetallePedido> Detalles { get; set; } = new();
 
         //public string NombreCliente { get; set; } = string.Empty;
         //public string Direccion { get; set; } = string.Empty;
