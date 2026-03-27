@@ -41,9 +41,9 @@ namespace P_OnlineApi.Controllers
         [HttpPost]
         public ActionResult<Pedido> CreatePedido(Pedido pdd)
         {
-            if (string.IsNullOrWhiteSpace(pdd.NombreCliente)) return BadRequest("Debe ingresar el Nombre del cliente correctamente");
-            if (string.IsNullOrWhiteSpace(pdd.Direccion)) return BadRequest("Debe ingresar la Direccion correctamente");
-            if (string.IsNullOrWhiteSpace(pdd.Telefono)) return BadRequest("Debe ingresar el Telefono correctamente");
+            //if (string.IsNullOrWhiteSpace(pdd.NombreCliente)) return BadRequest("Debe ingresar el Nombre del cliente correctamente");
+            //if (string.IsNullOrWhiteSpace(pdd.Direccion)) return BadRequest("Debe ingresar la Direccion correctamente");
+            //if (string.IsNullOrWhiteSpace(pdd.Telefono)) return BadRequest("Debe ingresar el Telefono correctamente");
             if (string.IsNullOrWhiteSpace(pdd.Detalle)) return BadRequest("Debe ingresar el Detalle correctamente");
             if (pdd.Total <= 0) return BadRequest("Debe ingresar el Monto Total correctamente");
             if (string.IsNullOrWhiteSpace(pdd.Estado)) return BadRequest("Debe ingresar el Estado correctamente");
@@ -59,15 +59,15 @@ namespace P_OnlineApi.Controllers
         {
             var ped = _context.Pedidos.FirstOrDefault(p => p.Id == id);
             if (ped == null) return NotFound("ID no encontrado");
-            if (string.IsNullOrWhiteSpace(pdd.NombreCliente)) return BadRequest("Debe ingresar el Nombre del cliente correctamente");
-            if (string.IsNullOrWhiteSpace(pdd.Direccion)) return BadRequest("Debe ingresar la Direccion correctamente");
-            if (string.IsNullOrWhiteSpace(pdd.Telefono)) return BadRequest("Debe ingresar el Telefono correctamente");
+            //if (string.IsNullOrWhiteSpace(pdd.NombreCliente)) return BadRequest("Debe ingresar el Nombre del cliente correctamente");
+            //if (string.IsNullOrWhiteSpace(pdd.Direccion)) return BadRequest("Debe ingresar la Direccion correctamente");
+            //if (string.IsNullOrWhiteSpace(pdd.Telefono)) return BadRequest("Debe ingresar el Telefono correctamente");
             if (string.IsNullOrWhiteSpace(pdd.Detalle)) return BadRequest("Debe ingresar el Detalle correctamente");
             if (pdd.Total <= 0) return BadRequest("Debe ingresar el Monto Total correctamente");
             if (string.IsNullOrWhiteSpace(pdd.Estado)) return BadRequest("Debe ingresar el Estado correctamente");
-            ped.NombreCliente = pdd.NombreCliente;
-            ped.Direccion = pdd.Direccion;
-            ped.Telefono = pdd.Telefono;
+            //ped.NombreCliente = pdd.NombreCliente;
+            //ped.Direccion = pdd.Direccion;
+            //ped.Telefono = pdd.Telefono;
             ped.Detalle = pdd.Detalle;
             ped.Total = pdd.Total;
             ped.Estado = pdd.Estado;
@@ -86,13 +86,3 @@ namespace P_OnlineApi.Controllers
         }
     }
 }
-//[HttpGet("{id}")]
-//public ActionResult<Pedido> Getpedido(int id)
-//{
-//    var ped = pedidos.FirstOrDefault(p => p.Id == id);
-//    if (ped == null) return NoContent();
-//    return Ok(ped);
-//}
-
-
-

@@ -7,6 +7,7 @@
         public int Telefono { get; set; }
         public string Direccion { get; set; } = string.Empty;
         public string Correo { get; set; } = string.Empty;
-        public bool Activo { get; set; }
+        public bool Activo { get; set; } = true;
+        public List<Pedido> Pedidos { get; set; } = new();
     }
 }

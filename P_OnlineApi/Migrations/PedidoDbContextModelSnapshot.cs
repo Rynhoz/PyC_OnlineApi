@@ -51,23 +51,14 @@ namespace P_OnlineApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Detalle")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NombreCliente")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -76,7 +67,20 @@ namespace P_OnlineApi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClienteId");
+
                     b.ToTable("Pedidos");
+                });
+
+            modelBuilder.Entity("P_OnlineApi.Models.Pedido", b =>
+                {
+                    b.HasOne("P_OnlineApi.Models.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
                 });
 #pragma warning restore 612, 618
         }

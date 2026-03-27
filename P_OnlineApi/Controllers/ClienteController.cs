@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using P_OnlineApi.Data;
 using P_OnlineApi.Models;
 
@@ -17,14 +18,16 @@ namespace P_OnlineApi.Controllers
         [HttpGet]
         public ActionResult<Cliente> GetClientes()
         {
-            var pedidos = _context.Clientes.ToList();
-            return Ok(pedidos);
+            var clientes = _context.Clientes.ToList();
+
+            return Ok(clientes);
         }
 
         [HttpGet("{id}")]
         public ActionResult<Cliente> GetCliente(int id)
         {
-            var cliente = _context.Clientes.FirstOrDefault(c => c.Id == id);
+            //para que incluya los pedidos se tiene que usar el INCLUDE
+            var cliente = _context.Clientes.Include(c => c.Pedidos).FirstOrDefault(c => c.Id == id);
             if (cliente == null) return NoContent();
             return Ok(cliente);
         }
@@ -64,7 +67,7 @@ namespace P_OnlineApi.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Cliente> DeleteCliente(int id)
         {
-            var cliente = _context.Clientes.FirstOrDefault(c => c.Id == id);
+            var cliente = _context.Clientes.Include(c => c.Pedidos).FirstOrDefault(c => c.Id == id);
             if (cliente == null) return NoContent();
             _context.Clientes.Remove(cliente);
             _context.SaveChanges();
