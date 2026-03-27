@@ -13,14 +13,12 @@ namespace P_OnlineApi.Controllers
     [ApiController]
     public class PedidoController : ControllerBase
     {
-        //private static readonly List<Pedido> pedidos = PedidoData.pedidos; 
-
-        //este contexto tiene que ser privado si o si
-        private readonly PedidoDbContext _context; //decalracion variable de tipo priv
+        
+        private readonly PedidoDbContext _context; 
         
         public PedidoController(PedidoDbContext context)
         {
-            //cada vez que se inicialice la calse se va a conectar a la base de datos
+            
             _context = context;
         }
 
@@ -47,7 +45,7 @@ namespace P_OnlineApi.Controllers
             if (produc == null) return NoContent();
             if (pdd.Total != 0) return BadRequest("No Debe ingresar el monto total ");
             if (string.IsNullOrWhiteSpace(pdd.Estado)) return BadRequest("Debe ingresar el Estado correctamente");
-            //pdd.Id = pedidos.Max(p => p.Id) + 1;
+          
             dtp.PrecioUnitario = produc.Precio;
             dtp.SubTotal = produc.Precio * dtp.Cantidad;
             _context.DetallePedido.Add(dtp);
@@ -55,7 +53,7 @@ namespace P_OnlineApi.Controllers
             _context.Pedidos.Add(pdd);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetPedido), new { id = pdd.Id }, pdd);
-            /// /api/pedido/      8/ "nuevo id"  "Devuelve el pedido recien creado"
+            
         }
 
         [HttpPost("{id}/detalle")]

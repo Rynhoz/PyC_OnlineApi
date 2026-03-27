@@ -8,12 +8,7 @@ namespace P_OnlineApi.Data
     public class PedidoDbContext : DbContext
     {
         public PedidoDbContext(DbContextOptions<PedidoDbContext> options) : base(options) { }
-        /// Todas las opciones van a estar instanciadas de acuerdo a la herencia que se use 
-        /// DbContextOptions abre las opciones de acuerdo a <PedidoDbContext> 
-        /// se hereda de base 
-
-
-        ///instancia del dataset, osea crear una tabla a partir de codigo 
+     
         public DbSet<Pedido> Pedidos { get; set; }
 
 

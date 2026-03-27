@@ -26,7 +26,7 @@ namespace P_OnlineApi.Controllers
         [HttpGet("{id}")]
         public ActionResult<Cliente> GetCliente(int id)
         {
-            //para que incluya los pedidos se tiene que usar el INCLUDE
+            
             var cliente = _context.Clientes.Include(c => c.Pedidos).FirstOrDefault(c => c.Id == id);
             if (cliente == null) return NoContent();
             return Ok(cliente);
@@ -54,7 +54,7 @@ namespace P_OnlineApi.Controllers
             if (cli.Telefono < 0) return BadRequest("Debe ingresar el Telefono correctamente");
             if (string.IsNullOrWhiteSpace(cli.Direccion)) return BadRequest("Debe ingresar la Direccion correctamente");
             if (string.IsNullOrWhiteSpace(cli.Correo)) return BadRequest("Debe ingresar el Correo correctamente");
-            //if (cli.Activo is int) return BadRequest("Debe ingresar el Estado correctamente");
+            
             cliente.NombreCompleto = cli.NombreCompleto;
             cliente.Telefono = cli.Telefono;
             cliente.Direccion = cli.Direccion;
@@ -77,14 +77,14 @@ namespace P_OnlineApi.Controllers
         [HttpGet("buscar")]
         public ActionResult<Cliente> SearchCliente(string? nombre, bool? activo)
         {
-            var query = _context.Clientes.AsQueryable(); //Convierte la lista en un query de db
+            var query = _context.Clientes.AsQueryable(); 
 
             if (!string.IsNullOrWhiteSpace(nombre))
             {
                 query = query.Where(c => c.NombreCompleto.ToLower().Contains(nombre.ToLower()));
             }
 
-            //query para booleano
+            
             if (activo.HasValue)
             {
                 query = query.Where(c => c.Activo == activo);

@@ -7,8 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // crear otro                                              
 builder.Services.AddDbContext<PedidoDbContext>(options =>
-    ///Aqui va a ir a donde se va a conectar a la base de datos
-    ///si es que es web enotnces habra una conexion
+
     options.UseSqlite("Data Source=pedidos.db")
 );
 
